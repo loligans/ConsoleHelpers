@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+.vs
+.vscode
+ConsoleHelpers/obj
+ConsoleHelpers/bin
+ConsoleHelpers.Tests/obj
+ConsoleHelpers.Tests/bin
