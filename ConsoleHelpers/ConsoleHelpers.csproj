@@ -1,8 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup Label="Project Build Properties">
+        <TargetFrameworks>$(NetStandardTargetVersions)</TargetFrameworks>
+        <DocumentationFile>.\ConsoleHelpers.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Project Information">
+        <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
+        <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
+        <Authors>$(Authors)</Authors>
+        <Company>$(Company)</Company>
+        <PublishRepositoryUrl>$(PublishRepositoryUrl)</PublishRepositoryUrl>
+        <RootNamespace>$(RootNamespace)</RootNamespace>
+        <PackageTags>console;helper;input;io</PackageTags>
+        <Description>Handles parsing user input from the command line.</Description>
+    </PropertyGroup>
 
 </Project>

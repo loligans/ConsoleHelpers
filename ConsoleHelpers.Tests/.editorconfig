@@ -1,0 +1,22 @@
+################################################################################################################################################
+#                                                                                                                                              #
+#            Modify this file to disable Analyzer Warnings that are not applicable to the ConsoleHelpers.Test                                  #
+#                                                                                                                                              #
+################################################################################################################################################
+
+# All rules go under this [*.cs] declaration.
+[*.cs]
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = silent
+
+# CA2007: Consider calling ConfigureAwait on the awaited task
+dotnet_diagnostic.CA2007.severity = silent
+
+# VSTHRD200: Use "Async" suffix for async methods
+dotnet_diagnostic.VSTHRD200.severity = silent
+
+# AsyncMethodMustTakeCancellationToken: Async method must have a CancellationToken parameter
+dotnet_diagnostic.AsyncMethodMustTakeCancellationToken.severity = silent
+
+# AsyncMethodNamingConvention: Async method name must end with 'Async'
+dotnet_diagnostic.AsyncMethodNamingConvention.severity = silent

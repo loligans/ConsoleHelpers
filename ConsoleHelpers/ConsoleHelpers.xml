@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConsoleHelpers</name>
+    </assembly>
+    <members>
+        <member name="T:ConsoleHelpers.ConsoleHelper">
+            <summary>
+            Helpers for requesting Console Input.
+            </summary>
+        </member>
+        <member name="M:ConsoleHelpers.ConsoleHelper.GetInput">
+            <summary>
+            Requests user input from the <see cref="T:System.Console"/>.
+            </summary>
+            <returns>The user input or <see cref="F:System.String.Empty"/> if an exception occurred.</returns>
+        </member>
+        <member name="M:ConsoleHelpers.ConsoleHelper.TryGetInput``1(System.Nullable{``0}@,System.String)">
+            <summary>
+            Prompts a user for input. Parses the input into a nullable primitive type.
+            </summary>
+            <param name="result">Contains a value of <typeparamref name="T"/>if parsed. Otherwise null.</param>
+            <param name="prompt">The message to prompt a user with.</param>
+            <typeparam name="T">The primitive data type to request.</typeparam>
+            <returns>True if successfully parsed. Otherwise false.</returns>
+        </member>
+    </members>
+</doc>

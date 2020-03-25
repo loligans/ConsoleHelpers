@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 
 namespace ConsoleHelpers
 {
+    /// <summary>
+    /// Helpers for requesting Console Input.
+    /// </summary>
     public static class ConsoleHelper
     {
         /// <summary>
@@ -15,9 +19,10 @@ namespace ConsoleHelpers
             string input;
             try
             {
-                input = Console.ReadLine()?.ToLower() ?? string.Empty;
+                input = Console.ReadLine()?.ToLower(CultureInfo.CurrentCulture) ?? string.Empty;
             }
-            catch (Exception)
+            catch (Exception ex)
+            when (ex is IOException || ex is OutOfMemoryException || ex is ArgumentOutOfRangeException)
             {
                 input = string.Empty;
             }
@@ -58,11 +63,11 @@ namespace ConsoleHelpers
                     if (truthyValues.Contains(input, StringComparer.OrdinalIgnoreCase))
                     {
                         parsed = true;
-                        result = (T) Convert.ChangeType(true, typeof(bool));
+                        result = (T) Convert.ChangeType(true, typeof(bool), CultureInfo.CurrentCulture);
                     }else if (falsyValues.Contains(input, StringComparer.OrdinalIgnoreCase))
                     {
                         parsed = true;
-                        result = (T) Convert.ChangeType(false, typeof(bool));
+                        result = (T) Convert.ChangeType(false, typeof(bool), CultureInfo.CurrentCulture);
                     }
 
                     break;
@@ -71,73 +76,73 @@ namespace ConsoleHelpers
                 case TypeCode.Byte:
                 {
                     parsed = byte.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(byte)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(byte), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.SByte:
                 {
                     parsed = sbyte.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(sbyte)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(sbyte), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.Char:
                 {
                     parsed = char.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(char)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(char), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.Single:
                 {
                     parsed = float.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(float)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(float), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.Double:
                 {
                     parsed = double.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(double)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(double), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.Decimal:
                 {
                     parsed = decimal.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(decimal)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(decimal), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.Int16:
                 {
                     parsed = short.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(short)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(short), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.Int32:
                 {
                     parsed = int.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(int)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(int), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.Int64:
                 {
                     parsed = long.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(long)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(long), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.UInt16:
                 {
                     parsed = ushort.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(ushort)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(ushort), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.UInt32:
                 {
                     parsed = uint.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(uint)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(uint), CultureInfo.CurrentCulture) : null;
                     break;
                 }
                 case TypeCode.UInt64:
                 {
                     parsed = ulong.TryParse(input, out var output);
-                    result = parsed ? (T?) Convert.ChangeType(output, typeof(ulong)) : null;
+                    result = parsed ? (T?) Convert.ChangeType(output, typeof(ulong), CultureInfo.CurrentCulture) : null;
                     break;
                 }
             }
